@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# Obsidian
+.obsidian/
+!.obsidian/appearance.json
+!.obsidian/workspace.json
+
+# Claude Code 本地会话（可选，不同步）
+# .claude/chats/
+
+# 临时文件
+*.tmp
+*.log

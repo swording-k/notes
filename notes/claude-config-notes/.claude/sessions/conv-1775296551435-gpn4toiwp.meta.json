@@ -1,0 +1,20 @@
+{
+  "id": "conv-1775296551435-gpn4toiwp",
+  "title": "Excel in Anker coding test using Claude Code",
+  "titleGenerationStatus": "success",
+  "createdAt": 1775296551443,
+  "updatedAt": 1776394255601,
+  "lastResponseAt": 1776144402916,
+  "sessionId": "654b2d69-df06-41d6-979e-720ed60442d6",
+  "sdkSessionId": "654b2d69-df06-41d6-979e-720ed60442d6",
+  "currentNote": "SKILLS/README.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 0,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 200000,
+    "contextTokens": 0,
+    "percentage": 0
+  }
+}

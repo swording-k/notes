@@ -1,0 +1,20 @@
+{
+  "id": "conv-1775753144618-3b3jgbl4s",
+  "title": "Read clipboard via crosspaste MCP",
+  "titleGenerationStatus": "success",
+  "createdAt": 1775753144619,
+  "updatedAt": 1776143118737,
+  "lastResponseAt": 1776060953422,
+  "sessionId": "77113896-98f5-4784-9b24-5c4f89a5afa5",
+  "sdkSessionId": "77113896-98f5-4784-9b24-5c4f89a5afa5",
+  "currentNote": "HIDDEN_COMMANDS/README.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 40554,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 28746,
+    "contextWindow": 200000,
+    "contextTokens": 69300,
+    "percentage": 35
+  }
+}

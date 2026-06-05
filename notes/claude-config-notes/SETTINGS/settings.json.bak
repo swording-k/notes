@@ -1,0 +1,61 @@
+{
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "sk-cp-fj-x5ZkJzQKllQms6vaOpHDcWN4doqYT3_hCVkciarb32QXTd9FL_5Iz_Wj1oIwxK_FOvXmqOma3bSjwQcpfSLFPCcsE2Wv0A17Ay5vEdeRmwZdhC9tvsvU",
+    "ANTHROPIC_BASE_URL": "https://api.minimaxi.com/anthropic",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "MiniMax-M2.5",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "MiniMax-M2.7",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "MiniMax-M2.7",
+    "ANTHROPIC_MODEL": "MiniMax-M2.5",
+    "API_TIMEOUT_MS": "3000000",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": 1
+  },
+  "includeCoAuthoredBy": false,
+  "enabledPlugins": {
+    "hookify@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": true,
+    "explanatory-output-style@claude-plugins-official": true,
+    "learning-output-style@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true
+  },
+  "permissions": {
+    "allow": [
+      "Bash(git:*)",
+      "Bash(npm:*)",
+      "Bash(node:*)",
+      "Bash(pnpm:*)",
+      "Bash(yarn:*)",
+      "Bash(brew:*)",
+      "Bash(xcodebuild:*)",
+      "Bash(flutter:*)",
+      "Bash(swift:*)",
+      "Bash(cargo:*)",
+      "Bash(python3:*)",
+      "Bash(curl:*)",
+      "Bash(ls:*)",
+      "Bash(cd:*)",
+      "Bash(grep:*)",
+      "Read",
+      "Read(./*)",
+      "Write(./*)",
+      "Write",
+      "Edit(./*)",
+      "Edit",
+      "Glob(./*)",
+      "Glob",
+      "Grep",
+      "WebFetch"
+    ],
+    "defaultMode": "plan"
+  },
+  "hooks": {
+    "Stop": [{
+      "matcher": "",
+      "hooks": [{
+        "type": "command",
+        "command": "${CLAUDE_PLUGIN_ROOT}/plugins/ralph-loop/hooks/stop-hook.sh",
+        "timeout": 10
+      }]
+    }]
+  }
+}

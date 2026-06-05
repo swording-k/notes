@@ -1,0 +1,20 @@
+{
+  "id": "conv-1774533098767-2m6tdqatn",
+  "title": "Clarify Claude Code plugin and terminal chat hi...",
+  "titleGenerationStatus": "success",
+  "createdAt": 1774533098783,
+  "updatedAt": 1776394253120,
+  "lastResponseAt": 1775059059380,
+  "sessionId": "c3360a26-a308-49ec-b1d1-e4ab71ea4abd",
+  "sdkSessionId": "c3360a26-a308-49ec-b1d1-e4ab71ea4abd",
+  "currentNote": "MCP/README.md",
+  "usage": {
+    "model": "sonnet",
+    "inputTokens": 201,
+    "cacheCreationInputTokens": 82354,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 200000,
+    "contextTokens": 82555,
+    "percentage": 41
+  }
+}

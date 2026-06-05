@@ -1,0 +1,14 @@
+# Obsidian
+.obsidian/
+!.obsidian/config
+
+# Claude
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary
+*.tmp
+*.log

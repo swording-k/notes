@@ -1,0 +1,13 @@
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Obsidian
+.obsidian/
+*.base
+未命名.*
