@@ -1,0 +1,26 @@
+<Slide style={{ width: '1280px', height: '720px', padding: '28px 72px', background: '#FFFFFF' }}>
+  <Box style={{ height: 64 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#1E3A8A' }}>以前：项目靠「聊完靠人记、再登禅道填表」</Text>
+  </Box>
+  <Box style={{ flexDirection: 'row', marginTop: 16, gap: 40, height: 560 }}>
+    <Box style={{ width: '52%', gap: 18, justifyContent: 'center' }}>
+      {[
+        { t: '需求私聊 / 口头谈', d: '群里一句话带过，事后没人记得完整背景' },
+        { t: '决策没有留存', d: '「这个谁拍的板」永远追问不到源头' },
+        { t: '新人接手看不懂', d: '缺少上下文，上手成本极高' },
+        { t: '负责人看不清全局', d: '谁在做什么、卡在哪、何时交，靠问' },
+      ].map((p, i) => (
+        <Box key={i} style={{ flexDirection: 'row', gap: 14, alignItems: 'flex-start', background: '#F8FAFC', borderRadius: 12, padding: 16 }}>
+          <Box style={{ width: 10, height: 10, borderRadius: 5, background: '#F97316', marginTop: 8 }} />
+          <Box>
+            <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1E293B' }}>{p.t}</Text>
+            <Text style={{ fontSize: 17, color: '#64748B', marginTop: 4, lineHeight: 1.5 }}>{p.d}</Text>
+          </Box>
+        </Box>
+      ))}
+    </Box>
+    <Box style={{ width: '48%', justifyContent: 'center', alignItems: 'center', background: '#F8FAFC', borderRadius: 16 }}>
+      <Image src="assets/pain_chaos.svg" style={{ width: 380, height: 420, objectFit: 'contain' }} />
+    </Box>
+  </Box>
+</Slide>

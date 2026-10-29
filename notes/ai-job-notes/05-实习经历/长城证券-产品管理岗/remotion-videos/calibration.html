@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>手拉手协同系统 · 视频框位标注工具</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 28px 32px 80px;
+    background: #0b1020; color: #e5edff;
+    font-family: 'PingFang SC','Hiragino Sans GB','Microsoft YaHei',system-ui,sans-serif;
+  }
+  h1 { font-size: 26px; margin: 0 0 6px; }
+  .hint { color: #94a3b8; font-size: 14px; line-height: 1.7; margin-bottom: 8px; }
+  .hint b { color: #cbd5e1; }
+  .toolbar { position: sticky; top: 0; z-index: 50; background: #0b1020ee; padding: 12px 0 14px; border-bottom: 1px solid #1e293b; margin-bottom: 18px; }
+  button {
+    background: #1d4ed8; color: #fff; border: 0; border-radius: 8px;
+    padding: 9px 16px; font-size: 14px; font-weight: 700; cursor: pointer; margin-right: 10px;
+  }
+  button.ghost { background: #1e293b; color: #cbd5e1; }
+  button:hover { filter: brightness(1.1); }
+  .panel { margin: 0 0 40px; }
+  .panel h2 { font-size: 19px; margin: 0 0 10px; display: flex; align-items: center; gap: 10px; }
+  .badge { display: inline-flex; width: 30px; height: 30px; border-radius: 8px; align-items: center; justify-content: center; font-weight: 900; color: #06101f; }
+  .stage {
+    position: relative; width: 100%; max-width: 1040px; aspect-ratio: 2 / 1;
+    border: 1px solid #1e293b; border-radius: 12px; overflow: hidden; background: #000;
+    user-select: none;
+  }
+  .stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; pointer-events: none; }
+  .box {
+    position: absolute; border: 3px solid #38bdf8; border-radius: 10px; cursor: move;
+    box-shadow: 0 0 0 4000px rgba(6,10,20,0.45);
+  }
+  .box.sel { border-color: #fbbf24; box-shadow: 0 0 0 4000px rgba(6,10,20,0.45), 0 0 0 3px #fbbf24; }
+  .box .num {
+    position: absolute; left: -3px; top: -3px; width: 40px; height: 40px; border-radius: 10px;
+    background: #38bdf8; color: #06101f; font-weight: 900; font-size: 20px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .box.sel .num { background: #fbbf24; }
+  .box .lbl {
+    position: absolute; left: 44px; top: -3px; font-size: 13px; font-weight: 700; color: #e5edff;
+    background: rgba(8,12,22,0.7); padding: 4px 8px; border-radius: 6px; white-space: nowrap; pointer-events: none;
+  }
+  .box .handle {
+    position: absolute; right: -8px; bottom: -8px; width: 18px; height: 18px; border-radius: 4px;
+    background: #fbbf24; cursor: nwse-resize; border: 2px solid #06101f;
+  }
+  .coord { color: #94a3b8; font-size: 13px; margin-top: 8px; font-variant-numeric: tabular-nums; }
+  .coord b { color: #7dd3fc; }
+  #out { width: 100%; max-width: 1040px; height: 200px; background: #060a14; color: #7dd3fc; border: 1px solid #1e293b; border-radius: 8px; font-family: ui-monospace, Menlo, monospace; font-size: 12px; padding: 12px; margin-top: 10px; }
+  .legend { color: #64748b; font-size: 12px; margin-top: 6px; }
+</style>
+</head>
+<body>
+  <div class="toolbar">
+    <h1>视频框位标注工具</h1>
+    <div class="hint">
+      把每个编号框<b>拖到对应功能上</b>，右下角小方块可<b>缩放</b>。<b>选中</b>某个框后可用键盘精修：
+      <b>方向键</b>移动中心（Shift=5倍快移），<b>[ ]</b>调宽，<b>- =</b>调高。<br/>
+      调好后点<b>导出坐标</b>，把下载的 <code>calibration.json</code> 存到 <code>remotion-videos/</code> 根目录，或把下方文本框内容发给我，我即可一键重渲终版。
+    </div>
+    <div>
+      <button id="export">导出坐标</button>
+      <button id="copy" class="ghost">复制 JSON</button>
+      <button id="reset" class="ghost">重置全部</button>
+    </div>
+    <textarea id="out" readonly placeholder="导出的坐标会出现在这里…"></textarea>
+  </div>
+
+  <div id="panels"></div>
+
+<script>
+// ===== 初始坐标（来自 src/configs/*.ts，baseline）=====
+const PANELS = [
+  { id:'home', badge:'①', title:'首页', image:'public/assets/01-home.png', accent:'#3B82F6', beats:[
+    {label:'6 大核心数据卡片', cx:0.5, cy:0.13, ww:0.72, wh:0.17},
+    {label:'协同动态 · 待办/待评', cx:0.22, cy:0.58, ww:0.42, wh:0.44},
+    {label:'协同入口 · 发起协同', cx:0.8, cy:0.5, ww:0.4, wh:0.52},
+    {label:'辅助工具 + 商机广场', cx:0.62, cy:0.86, ww:0.72, wh:0.22},
+  ]},
+  { id:'opportunity-mining', badge:'②', title:'商机挖掘', image:'public/assets/02-opportunity-mining.png', accent:'#8B5CF6', beats:[
+    {label:'左侧工具箱 · 关注的企业', cx:0.13, cy:0.5, ww:0.26, wh:0.72},
+    {label:'关注企业列表', cx:0.55, cy:0.45, ww:0.72, wh:0.5},
+    {label:'行内操作 · 申请协同', cx:0.88, cy:0.5, ww:0.26, wh:0.5},
+    {label:'发现目标 → + 新增', cx:0.78, cy:0.12, ww:0.36, wh:0.2},
+  ]},
+  { id:'synergy-management', badge:'③', title:'协同管理', image:'public/assets/03-synergy-management.png', accent:'#EF4444', beats:[
+    {label:'左侧 5 大子功能 · 申请协同', cx:0.13, cy:0.5, ww:0.26, wh:0.72},
+    {label:'三个视图：我发起的/对接的/全部', cx:0.4, cy:0.16, ww:0.62, wh:0.16},
+    {label:'协同列表字段', cx:0.55, cy:0.5, ww:0.72, wh:0.5},
+    {label:'状态流转', cx:0.8, cy:0.8, ww:0.4, wh:0.34},
+  ]},
+  { id:'customer-management', badge:'④', title:'客户管理', image:'public/assets/04-customer-management.png', accent:'#10B981', beats:[
+    {label:'左侧：我服务的客户/潜客', cx:0.13, cy:0.4, ww:0.26, wh:0.42},
+    {label:'多维筛选', cx:0.45, cy:0.16, ww:0.72, wh:0.16},
+    {label:'客户档案字段', cx:0.55, cy:0.5, ww:0.72, wh:0.5},
+    {label:'批量导入客户', cx:0.82, cy:0.16, ww:0.32, wh:0.18},
+  ]},
+  { id:'ai-assistant', badge:'⑤', title:'AI 助理', image:'public/assets/05-ai-assistant.png', accent:'#F59E0B', beats:[
+    {label:'左侧 · AI 协同助手', cx:0.13, cy:0.3, ww:0.26, wh:0.42},
+    {label:'历史对话记录', cx:0.3, cy:0.52, ww:0.34, wh:0.72},
+    {label:'底部输入框 · 问业务问题', cx:0.64, cy:0.56, ww:0.56, wh:0.62},
+    {label:'⚠ 免责声明', cx:0.6, cy:0.92, ww:0.7, wh:0.14},
+  ]},
+];
+
+const STEP = 0.005, STEP_BIG = 0.02, STEP_W = 0.01, STEP_H = 0.01;
+const STATE = {}; // id -> [{cx,cy,ww,wh}]
+const els = {};   // id -> {stage, boxes:[div]}
+let sel = null;   // {id, idx}
+
+const clamp = (v,a,b) => Math.max(a, Math.min(b, v));
+
+function buildPanel(p) {
+  STATE[p.id] = p.beats.map(b => ({...b}));
+  const wrap = document.createElement('div'); wrap.className = 'panel';
+  const h = document.createElement('h2');
+  h.innerHTML = `<span class="badge" style="background:${p.accent}">${p.badge}</span>${p.title}`;
+  const stage = document.createElement('div'); stage.className = 'stage';
+  const img = document.createElement('img'); img.src = p.image; img.alt = p.title;
+  stage.appendChild(img);
+  const boxes = [];
+  p.beats.forEach((b, i) => {
+    const box = document.createElement('div'); box.className = 'box';
+    box.innerHTML = `<div class="num">${i+1}</div><div class="lbl">${b.label}</div><div class="handle"></div>`;
+    box.addEventListener('mousedown', (e) => {
+      if (e.target.classList.contains('handle')) return;
+      e.preventDefault(); selectBox(p.id, i);
+      const r = stage.getBoundingClientRect();
+      const start = { x:e.clientX, y:e.clientY, cx:STATE[p.id][i].cx, cy:STATE[p.id][i].cy };
+      const move = (ev) => {
+        const dx = (ev.clientX - start.x) / r.width;
+        const dy = (ev.clientY - start.y) / r.height;
+        const s = STATE[p.id][i];
+        s.cx = clamp(start.cx + dx, s.ww/2, 1 - s.ww/2);
+        s.cy = clamp(start.cy + dy, s.wh/2, 1 - s.wh/2);
+        paint(p.id);
+      };
+      const up = () => { document.removeEventListener('mousemove', move); document.removeEventListener('mouseup', up); };
+      document.addEventListener('mousemove', move); document.addEventListener('mouseup', up);
+    });
+    const handle = box.querySelector('.handle');
+    handle.addEventListener('mousedown', (e) => {
+      e.preventDefault(); e.stopPropagation(); selectBox(p.id, i);
+      const r = stage.getBoundingClientRect();
+      const start = { x:e.clientX, y:e.clientY, ww:STATE[p.id][i].ww, wh:STATE[p.id][i].wh, cx:STATE[p.id][i].cx, cy:STATE[p.id][i].cy };
+      const move = (ev) => {
+        const dw = (ev.clientX - start.x) / r.width;
+        const dh = (ev.clientY - start.y) / r.height;
+        const s = STATE[p.id][i];
+        const nw = clamp(start.ww + dw, 0.05, 1);
+        const nh = clamp(start.wh + dh, 0.04, 1);
+        s.cx = clamp(start.cx + (nw - start.ww)/2, nw/2, 1 - nw/2);
+        s.cy = clamp(start.cy + (nh - start.wh)/2, nh/2, 1 - nh/2);
+        s.ww = nw; s.wh = nh;
+        paint(p.id);
+      };
+      const up = () => { document.removeEventListener('mousemove', move); document.removeEventListener('mouseup', up); };
+      document.addEventListener('mousemove', move); document.addEventListener('mouseup', up);
+    });
+    stage.appendChild(box); boxes.push(box);
+  });
+  const coord = document.createElement('div'); coord.className = 'coord';
+  wrap.appendChild(h); wrap.appendChild(stage); wrap.appendChild(coord);
+  document.getElementById('panels').appendChild(wrap);
+  els[p.id] = { stage, boxes, coord };
+  paint(p.id);
+}
+
+function paint(id) {
+  const { stage, boxes, coord } = els[id];
+  STATE[id].forEach((b, i) => {
+    const box = boxes[i];
+    box.style.left = `${(b.cx - b.ww/2)*100}%`;
+    box.style.top = `${(b.cy - b.wh/2)*100}%`;
+    box.style.width = `${b.ww*100}%`;
+    box.style.height = `${b.wh*100}%`;
+    box.classList.toggle('sel', sel && sel.id===id && sel.idx===i);
+  });
+  if (sel && sel.id===id) {
+    const b = STATE[id][sel.idx];
+    coord.innerHTML = `选中 <b>#${sel.idx+1}</b> · cx=<b>${b.cx.toFixed(3)}</b> cy=<b>${b.cy.toFixed(3)}</b> ww=<b>${b.ww.toFixed(3)}</b> wh=<b>${b.wh.toFixed(3)}</b>`;
+  } else coord.innerHTML = '';
+}
+
+function selectBox(id, idx) { sel = {id, idx}; Object.keys(els).forEach(paint); }
+
+document.addEventListener('keydown', (e) => {
+  if (!sel) return;
+  const s = STATE[sel.id][sel.idx];
+  const big = e.shiftKey ? STEP_BIG/STEP : 1;
+  let used = true;
+  switch (e.key) {
+    case 'ArrowLeft': s.cx = clamp(s.cx - STEP*big, s.ww/2, 1-s.ww/2); break;
+    case 'ArrowRight': s.cx = clamp(s.cx + STEP*big, s.ww/2, 1-s.ww/2); break;
+    case 'ArrowUp': s.cy = clamp(s.cy - STEP*big, s.wh/2, 1-s.wh/2); break;
+    case 'ArrowDown': s.cy = clamp(s.cy + STEP*big, s.wh/2, 1-s.wh/2); break;
+    case '[': s.ww = clamp(s.ww - STEP_W, 0.05, 1); break;
+    case ']': s.ww = clamp(s.ww + STEP_W, 0.05, 1); break;
+    case '-': s.wh = clamp(s.wh - STEP_H, 0.04, 1); break;
+    case '=': s.wh = clamp(s.wh + STEP_H, 0.04, 1); break;
+    default: used = false;
+  }
+  if (used) { e.preventDefault(); paint(sel.id); }
+});
+
+function exportJSON() {
+  const out = {};
+  Object.keys(STATE).forEach(id => { out[id] = STATE[id].map(b => ({cx:+b.cx.toFixed(4), cy:+b.cy.toFixed(4), ww:+b.ww.toFixed(4), wh:+b.wh.toFixed(4)})); });
+  return out;
+}
+
+document.getElementById('export').addEventListener('click', () => {
+  const data = exportJSON();
+  const text = JSON.stringify(data, null, 2);
+  document.getElementById('out').value = text;
+  const blob = new Blob([text], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'calibration.json'; a.click();
+});
+document.getElementById('copy').addEventListener('click', () => {
+  const text = JSON.stringify(exportJSON(), null, 2);
+  document.getElementById('out').value = text;
+  navigator.clipboard.writeText(text).then(() => alert('已复制到剪贴板'));
+});
+document.getElementById('reset').addEventListener('click', () => {
+  if (!confirm('重置为初始坐标？')) return;
+  PANELS.forEach(p => { STATE[p.id] = p.beats.map(b => ({...b})); paint(p.id); });
+  document.getElementById('out').value = '';
+});
+
+PANELS.forEach(buildPanel);
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<Slide style={{ width: '1280px', height: '720px', padding: '28px 72px', background: '#FFFFFF' }}>
+  <Box style={{ height: 64 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#1E3A8A' }}>收获与下一步</Text>
+  </Box>
+  <Box style={{ flexDirection: 'row', marginTop: 20, gap: 36, height: 540 }}>
+    <Box style={{ width: '50%', background: '#E0F2FE', borderRadius: 16, padding: 28, justifyContent: 'space-between' }}>
+      <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#0369A1' }}>这段实习我收获了什么</Text>
+      <Box style={{ gap: 12, marginTop: 16 }}>
+        <Text style={{ fontSize: 18, color: '#1E293B', lineHeight: 1.6 }}>· 【占位-请替换】产品思维：从"做功能"到"先想清实体与流程"</Text>
+        <Text style={{ fontSize: 18, color: '#1E293B', lineHeight: 1.6 }}>· 【占位-请替换】从 0 到 1 落地一个 AI 产品</Text>
+        <Text style={{ fontSize: 18, color: '#1E293B', lineHeight: 1.6 }}>· 【占位-请替换】跨部门 / 跨工具协作经验</Text>
+        <Text style={{ fontSize: 18, color: '#1E293B', lineHeight: 1.6 }}>· 【占位-请替换】把"需求≠任务"这类概念讲清楚的能力</Text>
+      </Box>
+    </Box>
+    <Box style={{ width: '50%', background: '#FEF3C7', borderRadius: 16, padding: 28, justifyContent: 'space-between' }}>
+      <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#B45309' }}>下一步规划</Text>
+      <Box style={{ gap: 12, marginTop: 16 }}>
+        <Text style={{ fontSize: 18, color: '#1E293B', lineHeight: 1.6 }}>· 推进自研 / 自建版，验证可迁移性</Text>
+        <Text style={{ fontSize: 18, color: '#1E293B', lineHeight: 1.6 }}>· 把验证指标做精，建立客观度量</Text>
+        <Text style={{ fontSize: 18, color: '#1E293B', lineHeight: 1.6 }}>· 沉淀为团队可复用的 PM 流程模板</Text>
+        <Text style={{ fontSize: 18, color: '#1E293B', lineHeight: 1.6 }}>· 【占位-请替换】推广到其他项目团队</Text>
+      </Box>
+    </Box>
+  </Box>
+</Slide>

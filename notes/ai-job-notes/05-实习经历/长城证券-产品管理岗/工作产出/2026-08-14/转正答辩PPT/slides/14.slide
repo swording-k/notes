@@ -1,0 +1,20 @@
+<Slide style={{ width: '1280px', height: '720px', padding: '28px 72px', background: '#FFFFFF' }}>
+  <Box style={{ height: 64 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#1E3A8A' }}>验证结果：用客观指标说话</Text>
+  </Box>
+  <Box style={{ flexDirection: 'row', marginTop: 30, gap: 32, height: 420, alignItems: 'center' }}>
+    {[
+      { n: '【占位-请替换】', l: '核心功能验证通过率', c: '#2563EB' },
+      { n: '【占位-请替换】', l: '需求→任务可追溯率', c: '#0EA5E9' },
+      { n: '【占位-请替换】', l: '群聊响应可用性', c: '#F97316' },
+    ].map((x, i) => (
+      <Box key={i} style={{ flex: 1, alignItems: 'center', justifyContent: 'center', background: '#F8FAFC', borderRadius: 16, height: 320 }}>
+        <Text style={{ fontSize: 72, fontWeight: 'bold', color: x.c }}>{x.n}</Text>
+        <Text style={{ fontSize: 18, color: '#475569', marginTop: 16, textAlign: 'center' }}>{x.l}</Text>
+      </Box>
+    ))}
+  </Box>
+  <Box style={{ background: '#FEF3C7', borderRadius: 12, padding: 16, marginTop: 16 }}>
+    <Text style={{ fontSize: 17, color: '#B45309', lineHeight: 1.6 }}>说明：以上为待填的真实验证口径（对照 PRD 验收标准逐条测）。建议用 demo 实测值替换占位，例如"识别需求忽略闲聊 ×/× 次""决策留存 × 条"。数字必须真实可防御。</Text>
+  </Box>
+</Slide>

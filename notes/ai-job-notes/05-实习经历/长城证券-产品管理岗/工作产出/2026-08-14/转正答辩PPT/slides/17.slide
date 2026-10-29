@@ -1,0 +1,9 @@
+<Slide style={{ width: '1280px', height: '720px', padding: 0, background: 'linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%)' }}>
+  <Box style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', padding: '0 96px' }}>
+    <Text style={{ fontSize: 56, fontWeight: 'bold', color: '#FFFFFF', textAlign: 'center', lineHeight: 1.3 }}>让项目管理，回到它该在的地方——</Text>
+    <Text style={{ fontSize: 56, fontWeight: 'bold', color: '#FFFFFF', textAlign: 'center', lineHeight: 1.3, marginTop: 8 }}>群聊里，自然发生</Text>
+    <Box style={{ width: 120, height: 6, background: '#F97316', marginTop: 32, borderRadius: 3 }} />
+    <Text style={{ fontSize: 26, color: '#F0F9FF', marginTop: 28 }}>感谢聆听，欢迎提问与指正</Text>
+    <Text style={{ fontSize: 20, color: '#DBEAFE', marginTop: 40 }}>汇报人：杨锟　|　飞书项目管理智能体</Text>
+  </Box>
+</Slide>

@@ -1,0 +1,19 @@
+<Slide style={{ width: '1280px', height: '720px', padding: '28px 72px', background: '#FFFFFF' }}>
+  <Box style={{ height: 64 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#1E3A8A' }}>数据底座：一张多维表，10 张子表联动</Text>
+  </Box>
+  <Box style={{ flexDirection: 'row', marginTop: 16, gap: 40, height: 560 }}>
+    <Box style={{ width: '54%', justifyContent: 'center', alignItems: 'center', background: '#F8FAFC', borderRadius: 16 }}>
+      <Image src="assets/db_schema.svg" style={{ width: 600, height: 320, objectFit: 'contain' }} />
+    </Box>
+    <Box style={{ width: '46%', justifyContent: 'center', gap: 16 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1E293B' }}>核心实体（领域模型）</Text>
+      <Box style={{ background: '#F8FAFC', borderRadius: 12, padding: 16 }}>
+        <Text style={{ fontSize: 18, color: '#475569', lineHeight: 1.7 }}>· 项目 1:N 需求，需求 M:N 任务</Text>
+        <Text style={{ fontSize: 18, color: '#475569', lineHeight: 1.7 }}>· 任务含「责任人 + 执行人」双字段</Text>
+        <Text style={{ fontSize: 18, color: '#475569', lineHeight: 1.7 }}>· 工时、决策、里程碑独立成表</Text>
+      </Box>
+      <Text style={{ fontSize: 17, color: '#64748B', lineHeight: 1.6, marginTop: 8 }}>所有页面数据实时联动，打开即见全局进度——这是产品能"自动算进度"的底层原因。</Text>
+    </Box>
+  </Box>
+</Slide>

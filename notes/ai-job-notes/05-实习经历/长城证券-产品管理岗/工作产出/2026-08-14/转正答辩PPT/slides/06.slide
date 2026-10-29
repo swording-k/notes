@@ -1,0 +1,21 @@
+<Slide style={{ width: '1280px', height: '720px', padding: '28px 72px', background: '#FFFFFF' }}>
+  <Box style={{ height: 64 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#1E3A8A' }}>整条链路，搬进飞书群一句话流转</Text>
+  </Box>
+  <Box style={{ marginTop: 8, justifyContent: 'center', alignItems: 'center' }}>
+    <Image src="assets/flow_overview.svg" style={{ width: 1080, height: 290, objectFit: 'contain' }} />
+  </Box>
+  <Box style={{ flexDirection: 'row', gap: 20, marginTop: 24 }}>
+    {[
+      { t: '不离开聊天界面', d: '群聊即入口，无需切换系统' },
+      { t: '表格自动落库', d: '多维表实时写入，免手动登表' },
+      { t: '进度自动算', d: '完成率、逾期自动更新' },
+      { t: '决策可追溯', d: '谁拍板、为什么、何时，留痕' },
+    ].map((c, i) => (
+      <Box key={i} style={{ flex: 1, background: '#E0F2FE', borderRadius: 12, padding: 18 }}>
+        <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#0369A1' }}>{c.t}</Text>
+        <Text style={{ fontSize: 15, color: '#475569', marginTop: 6, lineHeight: 1.5 }}>{c.d}</Text>
+      </Box>
+    ))}
+  </Box>
+</Slide>

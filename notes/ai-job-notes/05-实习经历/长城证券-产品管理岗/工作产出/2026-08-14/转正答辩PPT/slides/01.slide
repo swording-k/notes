@@ -1,0 +1,9 @@
+<Slide style={{ width: '1280px', height: '720px', padding: 0, background: 'linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%)' }}>
+  <Box style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', justifyContent: 'center', padding: '0 96px' }}>
+    <Text style={{ fontSize: 20, color: '#E0F2FE', letterSpacing: 4 }}>实习转正答辩</Text>
+    <Text style={{ fontSize: 64, fontWeight: 'bold', color: '#FFFFFF', marginTop: 18, lineHeight: 1.15 }}>飞书群聊项目管理智能体</Text>
+    <Box style={{ width: 120, height: 6, background: '#F97316', marginTop: 28, borderRadius: 3 }} />
+    <Text style={{ fontSize: 28, color: '#F0F9FF', marginTop: 28 }}>把群聊里的需求、决策、任务、工时，自动沉淀成结构化记录</Text>
+    <Text style={{ fontSize: 22, color: '#DBEAFE', marginTop: 64 }}>汇报人：杨锟　|　金融科技研发中心　|　2026.08</Text>
+  </Box>
+</Slide>

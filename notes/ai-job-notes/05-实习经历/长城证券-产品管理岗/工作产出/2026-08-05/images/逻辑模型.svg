@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 380" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#555"/>
+    </marker>
+    <marker id="arrowD" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#999"/>
+    </marker>
+  </defs>
+
+  <!-- title -->
+  <text x="340" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#222">逻辑模型：需求 · 任务 · 人员 · 工时 关系图</text>
+
+  <!-- 项目 -->
+  <rect x="30" y="70" width="150" height="80" rx="10" fill="#DCE9F7" stroke="#2F6DB5" stroke-width="2"/>
+  <text x="105" y="105" text-anchor="middle" font-size="17" font-weight="bold" fill="#1B4F86">项目</text>
+  <text x="105" y="128" text-anchor="middle" font-size="11" fill="#3A6FA5">项目表（1 条 = 1 个项目）</text>
+
+  <!-- 任务 / 需求 -->
+  <rect x="260" y="70" width="170" height="80" rx="10" fill="#D8EFD8" stroke="#3C9A3C" stroke-width="2"/>
+  <text x="345" y="105" text-anchor="middle" font-size="17" font-weight="bold" fill="#206020">任务 / 需求</text>
+  <text x="345" y="128" text-anchor="middle" font-size="11" fill="#2E7D2E">同 1 张表（需求即任务）</text>
+
+  <!-- 人员 -->
+  <rect x="510" y="70" width="150" height="80" rx="10" fill="#ECE0F5" stroke="#7E52B3" stroke-width="2"/>
+  <text x="585" y="105" text-anchor="middle" font-size="17" font-weight="bold" fill="#4B2E75">人员</text>
+  <text x="585" y="128" text-anchor="middle" font-size="11" fill="#6A4A95">成员表（团队所有人）</text>
+
+  <!-- 工时 -->
+  <rect x="260" y="250" width="170" height="80" rx="10" fill="#FCEBD0" stroke="#D98A2B" stroke-width="2"/>
+  <text x="345" y="285" text-anchor="middle" font-size="17" font-weight="bold" fill="#9A5B12">工时</text>
+  <text x="345" y="308" text-anchor="middle" font-size="11" fill="#B06A20">工时表（1 条 = 1 次填报）</text>
+
+  <!-- 决策日志 -->
+  <rect x="30" y="250" width="150" height="80" rx="10" fill="#ECECEC" stroke="#888" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="105" y="285" text-anchor="middle" font-size="17" font-weight="bold" fill="#444">决策日志</text>
+  <text x="105" y="308" text-anchor="middle" font-size="11" fill="#666">关联任务 / 项目留痕</text>
+
+  <!-- 项目 -> 任务 1:N -->
+  <line x1="180" y1="110" x2="255" y2="110" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="217" y="102" text-anchor="middle" font-size="12" fill="#333">1 : N</text>
+
+  <!-- 任务 自引用 拆子任务 -->
+  <path d="M300,70 C300,40 390,40 390,70" fill="none" stroke="#3C9A3C" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="345" y="34" text-anchor="middle" font-size="12" fill="#206020">拆子任务 1:N</text>
+
+  <!-- 任务 -> 人员 1:1责任人 N协同人 -->
+  <line x1="430" y1="110" x2="505" y2="110" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="467" y="102" text-anchor="middle" font-size="11" fill="#333">1:1 责任人 · N 协同人</text>
+
+  <!-- 任务 -> 工时 1:N -->
+  <line x1="345" y1="150" x2="345" y2="245" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="352" y="200" text-anchor="middle" font-size="12" fill="#333">1 : N</text>
+
+  <!-- 人员 -> 工时 1:N -->
+  <path d="M585,150 C585,210 445,210 430,245" fill="none" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="512" y="216" text-anchor="middle" font-size="12" fill="#333">1 : N</text>
+
+  <!-- 任务 -> 决策日志 虚线 -->
+  <path d="M300,150 C250,200 200,210 185,245" fill="none" stroke="#999" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowD)"/>
+  <text x="225" y="200" text-anchor="middle" font-size="11" fill="#666">关联（决策留痕）</text>
+</svg>

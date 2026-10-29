@@ -1,0 +1,19 @@
+<Slide style={{ width: '1280px', height: '720px', padding: '28px 72px', background: '#FFFFFF' }}>
+  <Box style={{ height: 64 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#1E3A8A' }}>关键设计：需求 ≠ 任务</Text>
+  </Box>
+  <Box style={{ flexDirection: 'row', marginTop: 12, gap: 36, height: 560 }}>
+    <Box style={{ width: '50%', justifyContent: 'center', alignItems: 'center', background: '#F8FAFC', borderRadius: 16 }}>
+      <Image src="assets/er_model.png" style={{ width: 560, height: 313, objectFit: 'contain' }} />
+    </Box>
+    <Box style={{ width: '50%', justifyContent: 'center', gap: 16 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1E293B' }}>一个需求，可拆多任务；一个任务，可服务多需求</Text>
+      <Box style={{ background: '#E0F2FE', borderRadius: 12, padding: 16 }}>
+        <Text style={{ fontSize: 18, color: '#0369A1', lineHeight: 1.7 }}>· 需求 = 做什么 / 为什么（含验收标准）</Text>
+        <Text style={{ fontSize: 18, color: '#0369A1', lineHeight: 1.7 }}>· 任务 = 怎么做 / 谁执行（落地工作）</Text>
+        <Text style={{ fontSize: 18, color: '#0369A1', lineHeight: 1.7 }}>· 两者 M:N，用关联字段表达，不混为一表</Text>
+      </Box>
+      <Text style={{ fontSize: 17, color: '#64748B', lineHeight: 1.6, marginTop: 6 }}>这是整个产品的地基：先分对实体，才能客观验证"需求→任务是否可追溯"。早期曾误把两者同表，已纠正。</Text>
+    </Box>
+  </Box>
+</Slide>

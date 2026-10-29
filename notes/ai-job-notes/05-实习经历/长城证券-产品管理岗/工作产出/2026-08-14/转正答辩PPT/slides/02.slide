@@ -1,0 +1,26 @@
+<Slide style={{ width: '1280px', height: '720px', padding: '40px 72px', background: '#FFFFFF' }}>
+  <Box style={{ flexDirection: 'row', height: '100%' }}>
+    <Box style={{ width: '30%', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 48, fontWeight: 'bold', color: '#1E3A8A' }}>目录</Text>
+      <Box style={{ width: 64, height: 6, background: '#F97316', marginTop: 16, borderRadius: 3 }} />
+      <Text style={{ fontSize: 18, color: '#64748B', marginTop: 20 }}>CONTENTS</Text>
+    </Box>
+    <Box style={{ width: '70%', justifyContent: 'center', gap: 22 }}>
+      {[
+        { n: '01', t: '背景与痛点', d: '项目协作为什么散、慢、不可追溯' },
+        { n: '02', t: '产品方案与核心能力', d: '群聊里的 AI 助手怎么干活' },
+        { n: '03', t: '方法论亮点', d: '需求≠任务、Hybrid、文档分离' },
+        { n: '04', t: '落地进展与验证', d: 'Aily 上线 / 手册 / 自研探索' },
+        { n: '05', t: '个人收获与规划', d: '从 0 到 1 的成长与下一步' },
+      ].map((it, i) => (
+        <Box key={i} style={{ flexDirection: 'row', alignItems: 'center', gap: 20 }}>
+          <Text style={{ fontSize: 30, fontWeight: 'bold', color: '#2563EB', width: 56 }}>{it.n}</Text>
+          <Box style={{ flex: 1, borderLeft: '3px solid #E0F2FE', paddingLeft: 18 }}>
+            <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#1E293B' }}>{it.t}</Text>
+            <Text style={{ fontSize: 16, color: '#64748B', marginTop: 4 }}>{it.d}</Text>
+          </Box>
+        </Box>
+      ))}
+    </Box>
+  </Box>
+</Slide>

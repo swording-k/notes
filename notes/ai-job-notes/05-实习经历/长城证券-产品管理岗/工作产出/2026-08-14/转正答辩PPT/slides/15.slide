@@ -1,0 +1,11 @@
+<Slide style={{ width: '1280px', height: '720px', padding: 0, background: '#F8FAFC' }}>
+  <Box style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', justifyContent: 'center', padding: '0 96px', flexDirection: 'row', alignItems: 'center', gap: 40 }}>
+    <Box style={{ width: 200, height: 200, borderRadius: 24, background: 'linear-gradient(135deg, #2563EB 0%, #0EA5E9 100%)', justifyContent: 'center', alignItems: 'center' }}>
+      <Text style={{ fontSize: 96, fontWeight: 'bold', color: '#FFFFFF' }}>05</Text>
+    </Box>
+    <Box>
+      <Text style={{ fontSize: 56, fontWeight: 'bold', color: '#1E3A8A' }}>个人收获与规划</Text>
+      <Text style={{ fontSize: 22, color: '#64748B', marginTop: 16 }}>这段实习，我长成了什么样的产品人</Text>
+    </Box>
+  </Box>
+</Slide>

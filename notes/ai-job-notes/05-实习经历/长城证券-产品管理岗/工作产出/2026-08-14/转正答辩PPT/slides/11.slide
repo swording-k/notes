@@ -1,0 +1,31 @@
+<Slide style={{ width: '1280px', height: '720px', padding: '28px 72px', background: '#FFFFFF' }}>
+  <Box style={{ height: 64 }}>
+    <Text style={{ fontSize: 34, fontWeight: 'bold', color: '#1E3A8A' }}>两套方法，让 PM 流程可迁移、可扩展</Text>
+  </Box>
+  <Box style={{ flexDirection: 'row', marginTop: 16, gap: 40, height: 560 }}>
+    <Box style={{ width: '32%', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#2563EB' }}>Hybrid 开发模式</Text>
+      <Box style={{ width: 64, height: 5, background: '#F97316', marginTop: 12, borderRadius: 3 }} />
+      <Text style={{ fontSize: 18, color: '#475569', lineHeight: 1.7, marginTop: 16 }}>· 长城长大版本 → 瀑布（里程碑 + 变更门禁）</Text>
+      <Text style={{ fontSize: 18, color: '#475569', lineHeight: 1.7 }}>· 日常迭代 / 修 bug → 敏捷（Sprint + Backlog）</Text>
+      <Text style={{ fontSize: 18, color: '#475569', lineHeight: 1.7 }}>· 同一项目同时挂两种"节奏盒子"</Text>
+    </Box>
+    <Box style={{ width: '68%', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 26, fontWeight: 'bold', color: '#2563EB' }}>三文档分离（PRD / 领域 / 技术方案）</Text>
+      <Box style={{ width: 64, height: 5, background: '#F97316', marginTop: 12, borderRadius: 3 }} />
+      <Box style={{ flexDirection: 'row', gap: 18, marginTop: 20 }}>
+        {[
+          { t: 'PRD', d: '做什么 / 为什么 / 验收', c: '#2563EB' },
+          { t: '领域模型', d: '实体·字段·业务规则', c: '#0EA5E9' },
+          { t: '技术方案', d: '怎么建 / 用什么栈', c: '#F97316' },
+        ].map((x, i) => (
+          <Box key={i} style={{ flex: 1, background: '#F8FAFC', borderRadius: 12, padding: 18, borderTop: `4px solid ${x.c}` }}>
+            <Text style={{ fontSize: 22, fontWeight: 'bold', color: x.c }}>{x.t}</Text>
+            <Text style={{ fontSize: 16, color: '#475569', marginTop: 8, lineHeight: 1.5 }}>{x.d}</Text>
+          </Box>
+        ))}
+      </Box>
+      <Text style={{ fontSize: 17, color: '#64748B', lineHeight: 1.6, marginTop: 18 }}>领域文档可直接喂给 Agent / 研发，可移植；PRD 只引用不堆细节，改技术方向不必重写产品定义。</Text>
+    </Box>
+  </Box>
+</Slide>

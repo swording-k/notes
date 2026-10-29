@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="360" viewBox="0 0 1120 360">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2563EB"/><stop offset="1" stop-color="#0EA5E9"/>
+    </linearGradient>
+  </defs>
+  <g font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="17" fill="#1E293B" text-anchor="middle">
+    <rect x="0" y="0" width="1120" height="56" rx="10" fill="url(#g2)"/>
+    <text x="560" y="34" fill="#fff" font-size="20" font-weight="bold">项目管理甘特图 · 多维表（10 张子表）</text>
+    <!-- 2 rows x 5 cols -->
+    <g>
+      <!-- row1 -->
+      <rect x="20" y="80" width="200" height="64" rx="8" fill="#E0F2FE"/><text x="120" y="118" fill="#0369A1">项目表</text>
+      <rect x="240" y="80" width="200" height="64" rx="8" fill="#E0F2FE"/><text x="340" y="118" fill="#0369A1">需求表</text>
+      <rect x="460" y="80" width="200" height="64" rx="8" fill="#E0F2FE"/><text x="560" y="118" fill="#0369A1">任务表</text>
+      <rect x="680" y="80" width="200" height="64" rx="8" fill="#E0F2FE"/><text x="780" y="118" fill="#0369A1">工时表</text>
+      <rect x="900" y="80" width="200" height="64" rx="8" fill="#E0F2FE"/><text x="1000" y="118" fill="#0369A1">人员表</text>
+      <!-- row2 -->
+      <rect x="20" y="170" width="200" height="64" rx="8" fill="#F1F5F9"/><text x="120" y="208" fill="#334155">决策表</text>
+      <rect x="240" y="170" width="200" height="64" rx="8" fill="#F1F5F9"/><text x="340" y="208" fill="#334155">里程碑表</text>
+      <rect x="460" y="170" width="200" height="64" rx="8" fill="#F1F5F9"/><text x="560" y="208" fill="#334155">迭代表</text>
+      <rect x="680" y="170" width="200" height="64" rx="8" fill="#F1F5F9"/><text x="780" y="208" fill="#334155">日报/周报</text>
+      <rect x="900" y="170" width="200" height="64" rx="8" fill="#F1F5F9"/><text x="1000" y="208" fill="#334155">设置/枚举</text>
+    </g>
+    <text x="560" y="290" font-size="16" fill="#64748B">需求表 ↔ 任务表 通过「双向关联记录」实现 M:N，不建独立中间表</text>
+    <text x="560" y="330" font-size="16" fill="#64748B">所有页面数据实时联动，打开即见全局进度</text>
+  </g>
+</svg>

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 820" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="12" markerHeight="12" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#444"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1360" height="820" fill="#ffffff"/>
+
+  <!-- ===== 关系连线 ===== -->
+  <!-- 项目 -> 里程碑 (瀑布容器) 1:N -->
+  <path d="M850,79 L900,87" stroke="#34495E" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+  <text x="858" y="72" font-size="13" fill="#34495E" font-weight="bold">1:N</text>
+
+  <!-- 项目 -> 需求 1:N -->
+  <path d="M630,122 C560,160 440,175 330,208" stroke="#4A90D9" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+  <text x="430" y="160" font-size="13" fill="#4A90D9" font-weight="bold">1:N 所属项目</text>
+
+  <!-- 需求 <-> 任务 M:N 直接连线（无独立表，飞书关联字段实现） -->
+  <path d="M420,262 C620,300 740,300 940,262" stroke="#27AE60" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+  <path d="M940,278 C740,316 620,316 420,278" stroke="#27AE60" stroke-width="3" fill="none" marker-end="url(#arr)"/>
+  <text x="650" y="296" font-size="14" fill="#1E8449" font-weight="bold">M : N 双向关联</text>
+  <text x="650" y="316" font-size="11" fill="#1E8449">飞书用「关联记录」字段实现，无需独立建表</text>
+
+  <!-- 项目 -> 任务 1:N -->
+  <path d="M720,120 C880,155 1000,165 1060,208" stroke="#4A90D9" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+  <text x="900" y="150" font-size="13" fill="#4A90D9" font-weight="bold">1:N 所属项目</text>
+
+  <!-- 任务 -> Sprint (敏捷容器) 1:N -->
+  <path d="M1085,310 L1085,390" stroke="#34495E" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+  <text x="1095" y="352" font-size="13" fill="#34495E" font-weight="bold">1:N</text>
+
+  <!-- 任务 -> 工时 1:N -->
+  <path d="M960,308 C720,350 420,375 270,430" stroke="#E74C3C" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+  <text x="560" y="372" font-size="13" fill="#E74C3C" font-weight="bold">1:N 填报</text>
+
+  <!-- 任务 -> 人员 (责任人/执行人) -->
+  <path d="M1090,312 C900,355 720,375 580,430" stroke="#9B59B6" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+  <text x="900" y="372" font-size="13" fill="#9B59B6" font-weight="bold">责任人 / 执行人</text>
+
+  <!-- 任务 -> 决策 1:N -->
+  <path d="M1220,308 C1230,360 1000,395 900,430" stroke="#7F8C8D" stroke-width="2.5" fill="none" marker-end="url(#arr)"/>
+  <text x="1180" y="372" font-size="13" fill="#7F8C8D" font-weight="bold">1:N 关联</text>
+
+  <!-- 决策 <- 需求/项目 注释 -->
+  <path d="M700,430 C720,300 560,255 420,258" stroke="#7F8C8D" stroke-width="1.6" stroke-dasharray="6 5" fill="none"/>
+  <text x="500" y="335" font-size="12" fill="#7F8C8D">也可关联需求 / 项目</text>
+
+  <!-- ===== 实体框 ===== -->
+  <!-- 项目 -->
+  <rect x="510" y="42" width="340" height="78" rx="12" fill="#EAF4FC" stroke="#4A90D9" stroke-width="2.5"/>
+  <text x="680" y="76" font-size="20" font-weight="bold" fill="#2C6CB0" text-anchor="middle">项目 / 版本 Project</text>
+  <text x="680" y="100" font-size="12" fill="#555" text-anchor="middle">项目ID · 名称 · 目标 · 总负责人 · 模式(瀑布/敏捷/混合)</text>
+
+  <!-- 里程碑/阶段 瀑布容器 -->
+  <rect x="900" y="55" width="240" height="64" rx="10" fill="#EBEDEF" stroke="#34495E" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="1020" y="82" font-size="15" font-weight="bold" fill="#34495E" text-anchor="middle">里程碑 / 阶段（瀑布容器）</text>
+  <text x="1020" y="104" font-size="11" fill="#5D6D7E" text-anchor="middle">大版本走阶段门禁 + 变更请求 CR</text>
+
+  <!-- 需求 -->
+  <rect x="130" y="210" width="290" height="100" rx="12" fill="#EAFBF0" stroke="#50C878" stroke-width="2.5"/>
+  <text x="275" y="244" font-size="19" font-weight="bold" fill="#2E8B57" text-anchor="middle">需求 Requirement</text>
+  <text x="275" y="270" font-size="12" fill="#555" text-anchor="middle">需求ID · 标题 · 描述(含业务价值)</text>
+  <text x="275" y="290" font-size="12" fill="#555" text-anchor="middle">验收标准 · 优先级 · 状态 · 来源</text>
+  <text x="275" y="310" font-size="12" fill="#2E8B57" text-anchor="middle">“做什么 + 做到什么算完”</text>
+
+  <!-- 任务 -->
+  <rect x="940" y="210" width="290" height="100" rx="12" fill="#FFF6E9" stroke="#F5A623" stroke-width="2.5"/>
+  <text x="1085" y="244" font-size="19" font-weight="bold" fill="#B9770E" text-anchor="middle">任务 Task</text>
+  <text x="1085" y="270" font-size="12" fill="#555" text-anchor="middle">任务ID · 标题 · type(开发/设计/测试/缺陷)</text>
+  <text x="1085" y="290" font-size="12" fill="#555" text-anchor="middle">责任人 · 执行人 · 预估/实际工时 · 状态</text>
+  <text x="1085" y="310" font-size="12" fill="#B9770E" text-anchor="middle">“怎么做”的执行单元（Bug 也是它）</text>
+
+  <!-- Sprint/Backlog 敏捷容器 -->
+  <rect x="940" y="390" width="290" height="72" rx="10" fill="#EBEDEF" stroke="#34495E" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="1085" y="418" font-size="15" font-weight="bold" fill="#34495E" text-anchor="middle">Sprint / Backlog（敏捷容器）</text>
+  <text x="1085" y="442" font-size="11" fill="#5D6D7E" text-anchor="middle">日常迭代 / 加功能 / 修 bug 走这里</text>
+
+  <!-- 工时 -->
+  <rect x="130" y="430" width="280" height="96" rx="12" fill="#FDEDEC" stroke="#E74C3C" stroke-width="2.5"/>
+  <text x="270" y="464" font-size="18" font-weight="bold" fill="#C0392B" text-anchor="middle">工时 Worklog</text>
+  <text x="270" y="490" font-size="12" fill="#555" text-anchor="middle">日期 · 成员 · 任务 · 时长</text>
+  <text x="270" y="512" font-size="12" fill="#555" text-anchor="middle">类型(预估/实际) · 备注</text>
+
+  <!-- 人员 -->
+  <rect x="440" y="430" width="280" height="96" rx="12" fill="#F5EEF8" stroke="#9B59B6" stroke-width="2.5"/>
+  <text x="580" y="464" font-size="18" font-weight="bold" fill="#7D3C98" text-anchor="middle">人员 Member</text>
+  <text x="580" y="490" font-size="12" fill="#555" text-anchor="middle">成员名 · 部门 · 账号 · 角色</text>
+  <text x="580" y="512" font-size="12" fill="#555" text-anchor="middle">角色: PM / 小队长 / 前端 / 后端 / 设计 / 测试</text>
+
+  <!-- 决策 -->
+  <rect x="760" y="430" width="280" height="96" rx="12" fill="#ECF0F1" stroke="#7F8C8D" stroke-width="2.5"/>
+  <text x="900" y="464" font-size="18" font-weight="bold" fill="#566573" text-anchor="middle">决策 Decision</text>
+  <text x="900" y="490" font-size="12" fill="#555" text-anchor="middle">决策标题 · 内容 · 决策人 · 时间</text>
+  <text x="900" y="512" font-size="12" fill="#555" text-anchor="middle">关联对象(项目/需求/任务) · 状态</text>
+
+  <!-- ===== 关系速记（精简） ===== -->
+  <text x="130" y="580" font-size="13" fill="#333" font-weight="bold">关系速记：</text>
+  <text x="130" y="606" font-size="12.5" fill="#333">• 需求 ⟷ 任务 = <tspan fill="#1E8449" font-weight="bold">M:N</tspan>（双向关联；飞书「关联记录」字段实现，<tspan fill="#C0392B" font-weight="bold">不单独建表</tspan>）</text>
+  <text x="130" y="632" font-size="12.5" fill="#333">• 任务.type 区分 开发 / 设计 / 测试 / 缺陷 —— <tspan fill="#B9770E" font-weight="bold">Bug 是任务的一种</tspan>，不单建实体</text>
+  <text x="130" y="658" font-size="12.5" fill="#333">• 双负责人：责任人(问责) + 执行人(实际)，对应「PM → 小队长 → 个人」委托链</text>
+  <text x="130" y="684" font-size="12.5" fill="#333">• 容器：大版本走 <tspan fill="#34495E" font-weight="bold">里程碑/阶段(瀑布)</tspan>，日常迭代走 <tspan fill="#34495E" font-weight="bold">Sprint/Backlog(敏捷)</tspan> —— 底层实体共用，只换"盒子"</text>
+</svg>
