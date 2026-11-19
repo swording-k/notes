@@ -4,7 +4,7 @@
 
 `~/.claude/settings.json` - 全局设置（Plugins、Hooks、Permissions）
 
-## 已启用的 Plugins
+## 已启用的 Plugins (2026-06-20 更新)
 
 ```json
 "enabledPlugins": {
@@ -13,7 +13,8 @@
   "explanatory-output-style@claude-plugins-official": true,
   "learning-output-style@claude-plugins-official": true,
   "code-review@claude-plugins-official": true,
-  "security-guidance@claude-plugins-official": true
+  "security-guidance@claude-plugins-official": true,
+  "swift-lsp@claude-plugins-official": true
 }
 ```
 
@@ -25,6 +26,56 @@
 | **learning-output-style** | 交互式学习，代码决策点会请求有意义的贡献 |
 | **code-review** | PR 自动代码审查，多代理评分 |
 | **security-guidance** | 编辑文件时警告安全问题（命令注入、XSS 等） |
+| **swift-lsp** | Swift 语言支持（LSP 集成） |
+
+---
+
+## Obsidian Skills（2026-11-20 新增）
+
+官方 Agent Skills 插件，作者是 Obsidian CEO Steph Ango（kepano），MIT 协议。
+
+| 项目 | 说明 |
+|------|------|
+| 仓库 | https://github.com/obsidianmd/obsidian-skills |
+| Marketplace | `obsidian-skills` |
+| Plugin | `obsidian@obsidian-skills` v1.2.0 |
+| 安装范围 | user（`~/.claude/settings.json`） |
+| 状态 | ✅ enabled |
+
+### 安装命令
+
+```bash
+claude plugin marketplace add obsidianmd/obsidian-skills
+claude plugin install obsidian@obsidian-skills
+```
+
+安装后需要**重启 Claude Code**（或开新会话）才会加载这些 skill。
+
+### 包含的 7 个 Skill
+
+| Skill | 作用 |
+|-------|------|
+| `obsidian-markdown` | Obsidian 风格 Markdown：wikilink、embed、callout、properties、frontmatter |
+| `obsidian-bases` | `.base` 数据库视图 |
+| `json-canvas` | `.canvas` 白板 JSON |
+| `obsidian-cli` | 通过 Obsidian CLI 读写笔记、搜索、任务、属性；插件/主题开发调试 |
+| `obsidian-headless` | 不开桌面端做 Sync / Publish |
+| `defuddle` | 网页转干净 Markdown，节省 token |
+| `knap` | 用 JSON/CSV 批量渲染模板 |
+
+### 使用场景
+
+- 在本仓库写笔记时自动遵守 Obsidian 语法（双链、callout、frontmatter）
+- 需要批量整理、搜索、建 Canvas / Base 时调用对应 skill
+- `obsidian-cli` 需要 Obsidian 桌面端打开并启用 CLI
+
+### 注意事项
+
+- 本机 `~/.agents/skills/` 下已有 `obsidian-markdown`、`obsidian-cli`，那是给 Codex 等其他工具用的；Claude Code 走 plugin，不要重复安装。
+- 更新：`claude plugin update obsidian@obsidian-skills`
+- 查看组件：`claude plugin details obsidian@obsidian-skills`
+
+---
 
 ## Permissions 配置
 
