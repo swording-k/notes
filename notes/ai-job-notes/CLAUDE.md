@@ -157,6 +157,7 @@ AI-Job-Notes/
    - 保留各书 `LICENSE` 和署名，协议为 CC BY-NC-SA 4.0。
 6. **提交范围**：本目录属于 `~/Desktop/notes` monorepo，提交时只提交 `notes/ai-job-notes/` 下的改动，不带上 `ielts-study`、`claude-config-notes` 等无关改动。
 7. **文档同步**：用户提出的新要求、新规范、聊天中达成的共识，必须实时更新到 CLAUDE.md、README.md 和知识地图.md，不能停留在旧版本。
+8. **Obsidian 配置**：`.obsidian/` 随仓库同步（配置 + 插件），方便别人 clone 后直接使用；`workspace.json`、插件 `data.json`、缓存不入库。monorepo 根 `.gitignore` 只对 `notes/ai-job-notes/.obsidian/` 放行。
 
 ---
 
