@@ -1,0 +1,8 @@
+.github/workflows/ci.yml
+**/.ipynb_checkpoints/
+slides/The-Zen-of-Python.txt
+**/__pycache__/
+slides/chap6_demo.txt
+slides/ZenOfPy.py
+test/
+bilibili/
