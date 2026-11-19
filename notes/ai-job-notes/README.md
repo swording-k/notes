@@ -135,6 +135,7 @@
 | [Hello-Agents](https://github.com/datawhalechina/Hello-Agents) | Agent 系统教材 |
 | [Happy-LLM](https://github.com/datawhalechina/happy-llm) | 大模型系统教材 |
 | [聪明办法学 Python](https://github.com/datawhalechina/learn-python-the-smart-way-v2) | Python 教材 |
+| [Mark 的 AI 产品经理知识库](https://qqs7y1hozd1.feishu.cn/wiki/QnPwwpKgKiGpFCkUrs7ciMIbnff) | 飞书外部知识库（入口见 [[08-AI产品经理知识/外部知识库/Mark的AI产品经理知识库]]） |
 | codefun2000 | 华为机考真题 |
 
 ---
