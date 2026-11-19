@@ -11,7 +11,12 @@ build/
 *.swp
 
 # Obsidian
-.obsidian/
+# 跟踪配置和插件，clone 后可直接使用
+# 不跟踪本机窗口布局和可能含密钥的插件设置
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/plugins/*/data.json
+.obsidian/cache/
 
 # OS
 .DS_Store

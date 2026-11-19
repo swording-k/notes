@@ -12,3 +12,7 @@ Thumbs.db
 *.base
 未命名.*
 sessions/
+
+# ai-job-notes：知识库配置和插件随仓库分享（其余目录仍忽略 .obsidian）
+!notes/ai-job-notes/.obsidian/
+!notes/ai-job-notes/**/*.base
